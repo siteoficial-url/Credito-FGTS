@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empréstimo FGTS - Rápido, Seguro e Digital</title>
+    <style>
+        /* Cores Profissionais:
+            Azul Principal (Confiança): #007bff
+            Azul Escuro (Header/Footer): #0056b3 ou #343a40
+            Cinza de Fundo (Clean): #f8f9fa
+            Destaque/CTA (Contraste): #ffc107 ou #dc3545 (vermelho/laranja para urgência)
+        */
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f9fa; /* Fundo cinza claro */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header - Azul Escuro */
+        header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra mais marcada */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #007bff; /* Azul Principal */
+            text-decoration: none;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007bff;
+        }
+
+        /* Hero Section - Gradiente de Azuis */
+        .hero {
+            background: linear-gradient(to right, #007bff, #0056b3); /* Gradiente azul profissional */
+            color: #fff;
+            padding: 100px 0; /* Mais espaço */
+            text-align: center;
+            border-bottom-left-radius: 0; /* Remove as bordas arredondadas do hero */
+            border-bottom-right-radius: 0;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Sombra para dar profundidade */
+        }
+
+        .hero h1 {
+            font-size: 3.5em; /* Título maior */
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.4em; /* Texto maior e mais legível */
+            margin-bottom: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        /* Botão de Destaque - Laranja/Amarelo para Alto Contraste */
+        .btn-primary {
+            background-color: #ffc107; /* Laranja/Amarelo para contraste */
+            color: #333;
+            padding: 18px 35px; /* Botão maior */
+            border-radius: 5px; /* Formato mais angular (profissional) */
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #007bff; /* Títulos em Azul */
+            font-weight: 700;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -10px;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: #ffc107; /* Linha de destaque amarela */
+            border-radius: 2px;
+        }
+
+        .section {
+            padding: 70px 0;
+            background-color: #ffffff;
+            margin-bottom: 30px;
+            border-radius: 10px; /* Bordas levemente arredondadas */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        /* How It Works (Steps) */
+        .how-it-works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .step {
+            background-color: #f0f4ff; /* Azul bem claro */
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 5px solid #007bff; /* Linha de destaque azul */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .step .icon {
+            font-size: 3.5em;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        .step h3 {
+            font-size: 1.6em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        /* Benefits - Design de Cartão */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #007bff; /* Destaque lateral azul */
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: background-color 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background-color: #f7f7f7;
+        }
+
+        .benefit-item .icon {
+            font-size: 2.5em;
+            color: #007bff;
+            flex-shrink: 0;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.4em;
+            margin-top: 0;
+            color: #333;
+        }
+
+        /* FAQ - Estilo Acordeão */
+        .faq-question {
+            font-size: 1.15em;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-list .faq-item:last-child .faq-question {
+            border-bottom: 1px solid #eee;
+        }
+        
+        .faq-question:hover {
+            color: #007bff;
+        }
+
+        .faq-answer {
+            font-size: 1em;
+            color: #666;
+            margin-top: 10px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            padding-bottom: 15px; /* Adicionado padding para melhor espaçamento */
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust as needed */
+        }
+        
+        .faq-question .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question .arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Call to Action (CTA) - Fundo Forte */
+        .cta-section {
+            text-align: center;
+            padding: 70px 0;
+            background: linear-gradient(to right, #0056b3, #003366); /* Azul mais escuro */
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .cta-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        /* Footer - Cinza Escuro */
+        footer {
+            background-color: #343a40; /* Cinza escuro */
+            color: #f8f9fa;
+            padding: 40px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        footer .container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #f8f9fa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #007bff;
+        }
+
+        .social-icons {
+            margin-top: 15px;
+        }
+        
+        .social-icons a {
+            color: #f8f9fa;
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #007bff;
+        }
+
+        /* Responsividade (Mantida) */
+        @media (max-width: 768px) {
+            header .container { flex-direction: column; }
+            nav ul { margin-top: 15px; flex-wrap: wrap; justify-content: center; }
+            nav ul li { margin: 0 15px 10px 15px; }
+            .hero h1 { font-size: 2.8em; }
+            .hero p { font-size: 1.2em; }
+            .section-title { font-size: 2em; }
+            .how-it-works-grid, .benefits-grid { grid-template-columns: 1fr; }
+            .cta-section h2 { font-size: 2.2em; }
+        }
+    </style>
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="#" class="logo">FGTS Crédito</a>
+            <nav>
+                <ul>
+                    <li><a href="#como-funciona">Processo</a></li>
+                    <li><a href="#beneficios">Vantagens</a></li>
+                    <li><a href="#faq">Dúvidas</a></li>
+                    <li><a href="https://wa.link/d2ljc7" target="_blank">Solicitar</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Antecipação FGTS: Seu Crédito Rápido e Seguro</h1>
+                <p>Libere o saldo do seu Saque-Aniversário com as menores taxas do mercado e receba o dinheiro na sua conta em até 24h.</p>
+                <a href="https://wa.link/d2ljc7" target="_blank" class="btn-primary">Simular Empréstimo Agora!</a>
+            </div>
+        </section>
+
+        <section id="como-funciona" class="section">
+            <div class="container">
+                <h2 class="section-title">Passo a Passo Para Contratar</h2>
+                <div class="how-it-works-grid">
+                    <div class="step">
+                        <div class="icon"><i class="fas fa-user-check"></i></div>
+                        <h3>1. Cadastro e Autorização</h3>
+                        <p>Opte pelo Saque-Aniversário no App FGTS e autorize nossa instituição parceira a consultar seu saldo.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon"><i class="fas fa-calculator"></i></div>
+                        <h3>2. Simule Online</h3>
+                        <p>Use nossa ferramenta para descobrir o valor exato que você pode antecipar, sem compromisso e em segundos.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon"><i class="fas fa-signature"></i></div>
+                        <h3>3. Formalização Digital</h3>
+                        <p>Contrate de forma 100% digital, assine o contrato eletronicamente e finalize o processo de onde estiver.</p>
+                    </div>
+                    <div class="step">
+                        <div class="icon"><i class="fas fa-hand-holding-usd"></i></div>
+                        <h3>4. Receba o Valor</h3>
+                        <p>O crédito é depositado na conta bancária que você informar em um prazo máximo de 24 horas úteis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficios" class="section">
+            <div class="container">
+                <h2 class="section-title">Vantagens de Antecipar Conosco</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-piggy-bank"></i></div>
+                        <div>
+                            <h3>Segurança e Taxas Competitivas</h3>
+                            <p>Operações realizadas com bancos de primeira linha e as taxas de juros mais justas do mercado.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-clock"></i></div>
+                        <div>
+                            <h3>Agilidade na Liberação</h3>
+                            <p>Seu dinheiro é creditado rapidamente após a aprovação, ideal para urgências e imprevistos.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-cloud"></i></div>
+                        <div>
+                            <h3>Operação Sem Consulta ao SPC/Serasa</h3>
+                            <p>O empréstimo é garantido pelo seu FGTS, não dependendo de análise de crédito tradicional.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item">
+                        <div class="icon"><i class="fas fa-check-circle"></i></div>
+                        <div>
+                            <h3>Zero Parcela Mensal</h3>
+                            <p>O pagamento é anual e automático, descontado diretamente do seu saldo FGTS, sem boletos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="section-title">Dúvidas Frequentes</h2>
+                <div class="faq-list">
+                    <div class="faq-item">
+                        <div class="faq-question">Preciso mudar para o Saque-Aniversário para contratar?<span class="arrow"><i class="fas fa-chevron-down"></i></span></div>
+                        <div class="faq-answer">
+                            <p>Sim. É a condição fundamental para este tipo de empréstimo. Você deve optar pelo Saque-Aniversário no aplicativo oficial do FGTS.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Posso antecipar quantas parcelas do FGTS?<span class="arrow"><i class="fas fa-chevron-down"></i></span></div>
+                        <div class="faq-answer">
+                            <p>Geralmente, é possível antecipar até 12 anos de parcelas do Saque-Aniversário. O número exato depende do seu saldo e da política de crédito.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">O que acontece se eu for demitido após antecipar?<span class="arrow"><i class="fas fa-chevron-down"></i></span></div>
+                        <div class="faq-answer">
+                            <p>Ao optar pelo Saque-Aniversário (e consequentemente pela antecipação), você perde o direito ao saque total por rescisão sem justa causa, mas mantém o direito à multa rescisória de 40%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="cta-section">
+            <div class="container">
+                <h2>Não Deixe Seu Dinheiro Parado!</h2>
+                <p>Simule agora e comece a usar seu FGTS para realizar seus projetos. Processo 100% online e sem burocracia.</p>
+                <a href="https://wa.link/d2ljc7" target="_blank" class="btn-primary">Quero Simular Meu Crédito</a> 
+</div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 FGTS Crédito Digital. Todos os direitos reservados.</p>
+            <ul class="footer-links">
+                <li><a href="#">Termos e Condições</a></li>
+                <li><a href="https://wa.link/d2ljc7" target="_blank">Fale Conosco</a></li>
+                <li><a href="#">Política de Segurança</a></li>
+            </ul>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.link/d2ljc7" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p style="font-size: 0.8em; opacity: 0.7; margin-top: 15px;">Atenção: Somos uma plataforma que conecta o cliente a instituições financeiras parceiras. Não somos uma instituição bancária.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.faq-question').forEach(item => {
+            item.addEventListener('click', event => {
+                const faqItem = item.closest('.faq-item');
+                faqItem.classList.toggle('active');
+                
+                // Toggle max-height for smooth transition
+                const answer = faqItem.querySelector('.faq-answer');
+                if (faqItem.classList.contains('active')) {
+                    answer.style.maxHeight = answer.scrollHeight + "px";
+                } else {
+                    answer.style.maxHeight = "0";
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
