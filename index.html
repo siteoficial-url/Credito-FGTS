@@ -330,6 +330,33 @@
             color: #007bff;
         }
 
+        /* Botão Flutuante do WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366; /* Verde do WhatsApp */
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 3px #999;
+            z-index: 1001; /* Acima de outros elementos */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.05);
+        }
+
+
         /* Responsividade (Mantida) */
         @media (max-width: 768px) {
             header .container { flex-direction: column; }
@@ -340,6 +367,13 @@
             .section-title { font-size: 2em; }
             .how-it-works-grid, .benefits-grid { grid-template-columns: 1fr; }
             .cta-section h2 { font-size: 2.2em; }
+            .whatsapp-float {
+                bottom: 20px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+            }
         }
     </style>
     
@@ -441,19 +475,19 @@
                     <div class="faq-item">
                         <div class="faq-question">Preciso mudar para o Saque-Aniversário para contratar?<span class="arrow"><i class="fas fa-chevron-down"></i></span></div>
                         <div class="faq-answer">
-                            <p>Sim. É a condição fundamental para este tipo de empréstimo. Você deve optar pelo Saque-Aniversário no aplicativo oficial do FGTS.</p>
+                            <p>Sim. É a condição fundamental para este tipo de empréstimo. Você deve optar pelo **Saque-Aniversário** no aplicativo oficial do FGTS.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">Posso antecipar quantas parcelas do FGTS?<span class="arrow"><i class="fas fa-chevron-down"></i></span></div>
                         <div class="faq-answer">
-                            <p>Geralmente, é possível antecipar até 12 anos de parcelas do Saque-Aniversário. O número exato depende do seu saldo e da política de crédito.</p>
+                            <p>Geralmente, é possível antecipar até **12 anos** de parcelas do Saque-Aniversário. O número exato depende do seu saldo e da política de crédito.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">O que acontece se eu for demitido após antecipar?<span class="arrow"><i class="fas fa-chevron-down"></i></span></div>
                         <div class="faq-answer">
-                            <p>Ao optar pelo Saque-Aniversário (e consequentemente pela antecipação), você perde o direito ao saque total por rescisão sem justa causa, mas mantém o direito à multa rescisória de 40%.</p>
+                            <p>Ao optar pelo Saque-Aniversário (e consequentemente pela antecipação), você perde o direito ao **saque total por rescisão sem justa causa**, mas mantém o direito à multa rescisória de 40%.</p>
                         </div>
                     </div>
                 </div>
@@ -474,17 +508,21 @@
             <p>&copy; 2025 FGTS Crédito Digital. Todos os direitos reservados.</p>
             <ul class="footer-links">
                 <li><a href="#">Termos e Condições</a></li>
-                <li><a href="https://siteoficial-url.github.io/servicoprestado/" target="_blank">Fale Conosco</a></li>
+                <li><a href="https://wa.link/d2ljc7" target="_blank">Fale Conosco</a></li>
                 <li><a href="#">Política de Segurança</a></li>
             </ul>
             <div class="social-icons">
                 <a href="#"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="https://siteoficial-url.github.io/servicoprestado/" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.link/d2ljc7" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p style="font-size: 0.8em; opacity: 0.7; margin-top: 15px;">Atenção: Somos uma plataforma que conecta o cliente a instituições financeiras parceiras. Não somos uma instituição bancária.</p>
         </div>
     </footer>
+    
+    <a href="https://wa.link/d2ljc7" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <script>
         document.querySelectorAll('.faq-question').forEach(item => {
@@ -495,7 +533,8 @@
                 // Toggle max-height for smooth transition
                 const answer = faqItem.querySelector('.faq-answer');
                 if (faqItem.classList.contains('active')) {
-                    answer.style.maxHeight = answer.scrollHeight + "px";
+                    // Set max-height to the actual height of the content plus padding
+                    answer.style.maxHeight = answer.scrollHeight + "px"; 
                 } else {
                     answer.style.maxHeight = "0";
                 }
